@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CadastroEspecialidadeActivity">
+    tools:context=".especialidade.CadastroEspecialidadeActivity">
 
     <ImageView
         android:id="@+id/imagemLogo"
@@ -33,26 +33,6 @@
             android:drawablePadding="10dp"
             android:hint="Título"/>
     </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/viewEspecialidades"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Especialidades"
-        android:layout_below="@+id/input_titulo"
-        android:layout_marginTop="20dp"
-        android:textSize="18sp"
-        android:layout_marginLeft="30dp"/>
-
-    <Spinner
-        android:id="@+id/spinnerEspecialidades"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/viewEspecialidades"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/round_spinner"/>
 
     <Button
         android:id="@+id/btnSalvarEspecialidade"

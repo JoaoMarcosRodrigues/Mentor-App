@@ -1,4 +1,4 @@
-package com.example.mentor;
+package com.example.mentor.mentorado;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.mentor.R;
+import com.example.mentor.helper.DBHelper;
 import com.google.android.material.textfield.TextInputEditText;
 import com.santalu.maskedittext.MaskEditText;
 

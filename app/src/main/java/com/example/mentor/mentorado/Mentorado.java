@@ -1,4 +1,4 @@
-package com.example.mentor;
+package com.example.mentor.mentorado;
 
 public class Mentorado {
     private String email;

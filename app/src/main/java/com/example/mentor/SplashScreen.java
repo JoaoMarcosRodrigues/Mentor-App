@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.example.mentor.mentor.CadastroMentorActivity;
+
 public class SplashScreen extends AppCompatActivity {
 
     @Override
@@ -16,7 +18,7 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(SplashScreen.this,CadastroEspecialidadeActivity.class);
+                Intent i = new Intent(SplashScreen.this, CadastroMentorActivity.class);
                 startActivity(i);
 
                 finish();

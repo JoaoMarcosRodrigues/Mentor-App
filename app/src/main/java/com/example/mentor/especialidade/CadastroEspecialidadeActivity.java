@@ -1,28 +1,24 @@
-package com.example.mentor;
+package com.example.mentor.especialidade;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.renderscript.ScriptGroup;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
+import com.example.mentor.R;
+import com.example.mentor.helper.DBHelper;
 import com.google.android.material.textfield.TextInputEditText;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class CadastroEspecialidadeActivity extends AppCompatActivity {
 
     Button salvarEspecialidade;
     TextInputEditText editTitulo;
-    Spinner spinner;
 
     ArrayAdapter<String> adapter;
     DBHelper dbHelper = new DBHelper(this);
@@ -34,12 +30,6 @@ public class CadastroEspecialidadeActivity extends AppCompatActivity {
 
         salvarEspecialidade = findViewById(R.id.btnSalvarEspecialidade);
         editTitulo = findViewById(R.id.editTitulo);
-        spinner = findViewById(R.id.spinnerEspecialidades);
-
-        // LISTA DE ESPECIALIDADES CADASTRADAS
-        final ArrayList<String> listTitulos = dbHelper.todasEspecialidades();
-        adapter = new ArrayAdapter<String>(this,R.layout.spinner_layout,R.id.txtTitulo,listTitulos);
-        spinner.setAdapter(adapter);
 
         // AÇÃO DO BOTÃO DE SALVAR ESPECIALIDADE
         salvarEspecialidade.setOnClickListener(new View.OnClickListener() {
@@ -53,8 +43,6 @@ public class CadastroEspecialidadeActivity extends AppCompatActivity {
                     Especialidade e = new Especialidade();
                     e.setTitulo(titulo);
                     addEspecialidade(e);
-                    listTitulos.add(e.getTitulo());
-                    adapter.notifyDataSetChanged();
                 }
             }
         });

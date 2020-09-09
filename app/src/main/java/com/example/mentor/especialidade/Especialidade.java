@@ -1,4 +1,4 @@
-package com.example.mentor;
+package com.example.mentor.especialidade;
 
 public class Especialidade {
     private int id;
