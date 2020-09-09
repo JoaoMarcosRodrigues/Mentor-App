@@ -149,6 +149,24 @@ public class DBHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    // REDEFINE A SENHA
+    public boolean redefinirSenha(String email, String senha){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues_mentorado = new ContentValues();
+        ContentValues contentValues_mentor = new ContentValues();
+
+        contentValues_mentorado.put(SENHA_MENTORADO,senha);
+        contentValues_mentor.put(SENHA_MENTOR,senha);
+
+        int result_mentorado = db.update(TABELA_MENTORADO,contentValues_mentorado,"email = ?",new String[]{email});
+        int result_mentor = db.update(TABELA_MENTOR,contentValues_mentorado,"email = ?",new String[]{email});
+
+        if(result_mentorado == -1 && result_mentor == -1)
+            return false;
+        else
+            return true;
+    }
+
     //------------------ ESPECIALIDADES ------------------
 
     // ADICIONANDO UMA ESPECIALIDADE
@@ -246,4 +264,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return cursor;
     }
+
+
 }

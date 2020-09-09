@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login.LoginActivity">
+
+    <ImageView
+        android:id="@+id/imageLogo"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/logo"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/imageLogo"
+        app:counterEnabled="true"
+        app:counterMaxLength="255">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:autofillHints="CPF"
+            android:drawableLeft="@drawable/ic_email"
+            android:drawablePadding="10dp"
+            android:paddingLeft="10dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_senha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/input_email"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+        app:counterEnabled="true"
+        app:counterMaxLength="8">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editSenha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Senha"
+            android:inputType="textPassword"
+            android:drawableLeft="@drawable/ic_senha"
+            android:paddingLeft="10dp"
+            android:drawablePadding="10dp"
+            android:autofillHints="Senha" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/viewTituloRedefinirSenha"
+        android:layout_width="wrap_content"
+        android:textColor="#902B2929"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/input_senha"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="60dp"
+        android:text="Esqueceu a senha?"/>
+
+    <TextView
+        android:id="@+id/viewRedefinirSenha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#162FCC"
+        android:layout_toRightOf="@id/viewTituloRedefinirSenha"
+        android:layout_below="@+id/input_senha"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="60dp"
+        android:linksClickable="true"
+        android:text="Redefinir Senha"/>
+
+    <CheckBox
+        android:id="@+id/checkLembrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lembrar meu login e senha"
+        android:layout_below="@+id/viewTituloRedefinirSenha"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"/>
+
+    <Button
+        android:id="@+id/btnEntrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_below="@+id/checkLembrar"
+        android:layout_marginTop="30dp"
+        android:background="#69A1BF"
+        android:layout_centerHorizontal="true"
+        android:text="Entrar"/>
+
+    <Button
+        android:id="@+id/btnCadastrese"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_below="@+id/btnEntrar"
+        android:layout_marginTop="10dp"
+        android:background="#69A1BF"
+        android:layout_centerHorizontal="true"
+        android:text="Cadastrar-se"/>
+
+</RelativeLayout>

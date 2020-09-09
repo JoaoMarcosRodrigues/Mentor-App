@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".tarefa.CadastroTarefaActivity"></activity>
+        <activity android:name=".login.RedefinirSenhaActivity"></activity>
+        <activity android:name=".login.OpcaoCadastroActivity" />
+        <activity android:name=".login.LoginActivity" />
+        <activity android:name=".tarefa.CadastroTarefaActivity" />
         <activity android:name=".mentor.CadastroMentorActivity" />
         <activity android:name=".especialidade.CadastroEspecialidadeActivity" />
         <activity
