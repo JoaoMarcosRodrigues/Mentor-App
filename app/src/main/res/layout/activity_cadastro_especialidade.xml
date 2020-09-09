@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CadastroEspecialidadeActivity">
+
+    <ImageView
+        android:id="@+id/imagemLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_marginTop="100dp"
+        android:padding="20dp"
+        android:src="@drawable/banner"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_titulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        app:counterEnabled="true"
+        app:counterMaxLength="255"
+        android:layout_below="@id/imagemLogo">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_titulo"
+            android:drawablePadding="10dp"
+            android:hint="Título"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/viewEspecialidades"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Especialidades"
+        android:layout_below="@+id/input_titulo"
+        android:layout_marginTop="20dp"
+        android:textSize="18sp"
+        android:layout_marginLeft="30dp"/>
+
+    <Spinner
+        android:id="@+id/spinnerEspecialidades"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/viewEspecialidades"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/round_spinner"/>
+
+    <Button
+        android:id="@+id/btnSalvarEspecialidade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cadastrar Especialidade"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="100dp"
+        android:layout_marginBottom="30dp"/>
+</RelativeLayout>

@@ -2,7 +2,9 @@ package com.example.mentor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -12,11 +14,13 @@ import com.santalu.maskedittext.MaskEditText;
 
 public class CadastroMentoradoActivity extends AppCompatActivity {
 
+    private static final String TAG = "CadastroMentorado";
     TextInputEditText editEmail,editNome,editSenha;
     MaskEditText editTelefone;
     Button btnCadastrar;
 
-    DBHelper dbHelper;
+    DBHelper dbHelper = new DBHelper(this);
+    Mentorado m = new Mentorado();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,27 +41,40 @@ public class CadastroMentoradoActivity extends AppCompatActivity {
                 String senha = editSenha.getText().toString();
                 String telefone = editTelefone.getRawText();
 
-                if(nome.equals(""))
-                    editNome.setError("Campo obrigatório!");
-                else if(email.equals(""))
+                if(email.equals(""))
                     editEmail.setError("Campo obrigatório!");
+                else if(nome.equals(""))
+                    editNome.setError("Campo obrigatório!");
                 else if(senha.equals(""))
                     editSenha.setError("Campo obrigatório!");
                 else{
-                    cadastrarMentorado(email,nome,telefone,senha);
-                    //Toast.makeText(CadastroMentoradoActivity.this,"Qualquer coisa",Toast.LENGTH_SHORT).show();
+                    m.setEmail(email);
+                    m.setNome(nome);
+                    m.setTelefone(telefone);
+                    m.setSenha(senha);
+                    addMentorado(m);
+                    //pegarMentorados();
                 }
             }
         });
     }
 
-    public void cadastrarMentorado(String email, String nome, String telefone, String senha){
-        boolean insert = dbHelper.addMentorado(email,nome,telefone,senha);
+    private void addMentorado(Mentorado m) {
+        boolean insert = dbHelper.addMentorado(m);
 
-        if(insert){
-            Toast.makeText(this,"Usuário cadastrado com sucesso!",Toast.LENGTH_SHORT).show();
-        }else{
-            Toast.makeText(this,"Desculpe, houve um erro!",Toast.LENGTH_SHORT).show();
+        if(insert)
+            Toast.makeText(this,"Mentorado cadastrado com sucesso!",Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(this,"Ops, houve um erro no cadastro =(",Toast.LENGTH_SHORT).show();
+    }
+
+    private void pegarMentorados(){
+        Cursor cursor = dbHelper.todosMentorados();
+        while (cursor.moveToNext()){
+            Log.d(TAG,cursor.getString(cursor.getColumnIndex("email"))+" - "+
+                    cursor.getString(cursor.getColumnIndex("nome"))+" - "+
+                    cursor.getString(cursor.getColumnIndex("telefone"))+" - "+
+                    cursor.getString(cursor.getColumnIndex("senha")));
         }
     }
 }

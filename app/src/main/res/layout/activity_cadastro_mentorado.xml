@@ -12,7 +12,6 @@
         android:layout_height="180dp"
         android:src="@drawable/banner"
         android:padding="10dp"
-        android:background="@drawable/round_banner"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:layout_marginLeft="30dp"/>
@@ -34,6 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
+            android:lines="1"
             android:drawableLeft="@drawable/ic_email"
             android:paddingLeft="10dp"
             android:inputType="textEmailAddress"
@@ -60,6 +60,7 @@
             android:drawableLeft="@drawable/ic_nome"
             android:paddingLeft="10dp"
             android:drawablePadding="10dp"
+            android:lines="1"
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -103,7 +104,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Senha"
-
             android:drawableLeft="@drawable/ic_senha"
             android:paddingLeft="10dp"
             android:drawablePadding="10dp"
