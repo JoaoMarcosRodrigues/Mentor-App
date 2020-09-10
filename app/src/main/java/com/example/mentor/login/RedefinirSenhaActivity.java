@@ -50,14 +50,25 @@ public class RedefinirSenhaActivity extends AppCompatActivity {
     }
 
     private void redefinirSenha(String email, String senha) {
-        boolean ok = dbHelper.redefinirSenha(email,senha);
-
-        if(ok){
-            Toast.makeText(this,"Senha alterada!",Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(this,LoginActivity.class);
-            startActivity(intent);
-        }else{
-            Toast.makeText(this,"Houve um erro! Tente mais tarde.",Toast.LENGTH_SHORT).show();
-        }
+        if(dbHelper.buscaEmail(email) == "mentorado") {
+            boolean ok = dbHelper.redefinirSenhaMentorado(email, senha);
+            if(ok){
+                Toast.makeText(this,"Senha alterada!",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this,LoginActivity.class);
+                startActivity(intent);
+            }else{
+                Toast.makeText(this,"Houve um erro! Tente mais tarde.",Toast.LENGTH_SHORT).show();
+            }
+        } else if(dbHelper.buscaEmail(email) == "mentor") {
+            boolean ok = dbHelper.redefinirSenhaMentor(email, senha);
+            if(ok){
+                Toast.makeText(this,"Senha alterada!",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this,LoginActivity.class);
+                startActivity(intent);
+            }else{
+                Toast.makeText(this,"Houve um erro! Tente mais tarde.",Toast.LENGTH_SHORT).show();
+            }
+        } else
+            Toast.makeText(this,"Usuário não encontrado!",Toast.LENGTH_SHORT).show();
     }
 }

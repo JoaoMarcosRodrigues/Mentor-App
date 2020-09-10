@@ -149,19 +149,41 @@ public class DBHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    // REDEFINE A SENHA
-    public boolean redefinirSenha(String email, String senha){
+    // VERIFICAR SE ESTÁ CORRETO
+    public boolean autenticaUsuario(String email, String senha){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql_mentorado = "SELECT * FROM mentorado WHERE email = "+ "'" + email + "'";
+        String sql_mentor = "SELECT * FROM mentor WHERE email = "+ "'" + email + "'";
+        Cursor cursor_mentorado = db.rawQuery(sql_mentorado,null);
+        Cursor cursor_mentor = db.rawQuery(sql_mentor,null);
+
+        while(cursor_mentorado.moveToNext()){
+            if(email.equals(cursor_mentorado.getString(cursor_mentorado.getColumnIndex("email")))){
+                if(senha.equals(cursor_mentorado.getString(cursor_mentorado.getColumnIndex("senha")))) {
+                    return true;
+                }
+            }
+        }
+        while(cursor_mentor.moveToNext()){
+            if(email.equals(cursor_mentor.getString(cursor_mentor.getColumnIndex("email")))){
+                if(senha.equals(cursor_mentor.getString(cursor_mentor.getColumnIndex("senha")))) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    // OK
+    public boolean redefinirSenhaMentorado(String email, String senha){
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues_mentorado = new ContentValues();
-        ContentValues contentValues_mentor = new ContentValues();
+        ContentValues contentValues = new ContentValues();
 
-        contentValues_mentorado.put(SENHA_MENTORADO,senha);
-        contentValues_mentor.put(SENHA_MENTOR,senha);
+        contentValues.put(SENHA_MENTORADO,senha);
 
-        int result_mentorado = db.update(TABELA_MENTORADO,contentValues_mentorado,"email = ?",new String[]{email});
-        int result_mentor = db.update(TABELA_MENTOR,contentValues_mentorado,"email = ?",new String[]{email});
+        int result = db.update(TABELA_MENTORADO,contentValues,"email = ?",new String[]{email});
 
-        if(result_mentorado == -1 && result_mentor == -1)
+        if(result == -1)
             return false;
         else
             return true;
@@ -234,6 +256,21 @@ public class DBHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    // OK
+    public boolean redefinirSenhaMentor(String email, String senha){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(SENHA_MENTOR,senha);
+
+        int result = db.update(TABELA_MENTOR,contentValues,"email = ?",new String[]{email});
+
+        if(result == -1)
+            return false;
+        else
+            return true;
+    }
+
     //------------------ TAREFA ------------------
 
     // ADICIONANDO UMA TAREFA
@@ -265,5 +302,18 @@ public class DBHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public String buscaEmail(String email){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql_mentorado = "SELECT * FROM mentorado WHERE email = "+email;
+        Cursor cursor_mentorado = db.rawQuery(sql_mentorado,null);
+        String sql_mentor = "SELECT * FROM mentor WHERE email = "+email;
+        Cursor cursor_mentor = db.rawQuery(sql_mentorado,null);
 
+        if(cursor_mentorado.moveToFirst())
+            return "mentorado";
+        else if(cursor_mentor.moveToFirst())
+            return "mentor";
+        else
+            return "";
+    }
 }
