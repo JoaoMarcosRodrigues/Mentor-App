@@ -302,12 +302,13 @@ public class DBHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    // VERIFICAR SE ESTÁ CERTO
     public String buscaEmail(String email){
         SQLiteDatabase db = this.getReadableDatabase();
         String sql_mentorado = "SELECT * FROM mentorado WHERE email = "+email;
         Cursor cursor_mentorado = db.rawQuery(sql_mentorado,null);
         String sql_mentor = "SELECT * FROM mentor WHERE email = "+email;
-        Cursor cursor_mentor = db.rawQuery(sql_mentorado,null);
+        Cursor cursor_mentor = db.rawQuery(sql_mentor,null);
 
         if(cursor_mentorado.moveToFirst())
             return "mentorado";

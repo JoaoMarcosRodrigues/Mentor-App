@@ -12,6 +12,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mentor.MainActivity;
 import com.example.mentor.R;
 import com.example.mentor.helper.DBHelper;
 import com.google.android.material.textfield.TextInputEditText;
@@ -116,8 +117,11 @@ public class LoginActivity extends AppCompatActivity {
     private void entrar(String email, String senha) {
         boolean entrar = dbHelper.autenticaUsuario(email,senha);
 
-        if(entrar)
-            Toast.makeText(this,"Login efetuado com sucesso!",Toast.LENGTH_SHORT).show();
+        if(entrar) {
+            Toast.makeText(this, "Login efetuado com sucesso!", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
         else
             Toast.makeText(this,"Ops, houve um erro! Tente outro email ou senha.",Toast.LENGTH_SHORT).show();
     }

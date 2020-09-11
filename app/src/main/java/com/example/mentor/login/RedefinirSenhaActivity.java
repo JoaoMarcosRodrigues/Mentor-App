@@ -49,6 +49,7 @@ public class RedefinirSenhaActivity extends AppCompatActivity {
         });
     }
 
+    // VERIFICAR SE ESTÁ CERTO
     private void redefinirSenha(String email, String senha) {
         if(dbHelper.buscaEmail(email) == "mentorado") {
             boolean ok = dbHelper.redefinirSenhaMentorado(email, senha);
